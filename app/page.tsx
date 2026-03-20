@@ -17,10 +17,12 @@ const dailyResults = [
   { date: "2026-03-10", day: 6, memories: 823, hot: 823, warm: 0, cold: 0, archive: 0, size: 3.05, recall: 0, similarity: 0, tested: 50, successes: 0, type: "daily" },
   { date: "2026-03-11", day: 7, memories: 823, hot: 823, warm: 0, cold: 0, archive: 0, size: 3.05, recall: 0, similarity: 0, tested: 50, successes: 0, type: "daily" },
   { date: "2026-03-12", day: 8, memories: 823, hot: 823, warm: 0, cold: 0, archive: 0, size: 3.05, recall: 0, similarity: 0, tested: 50, successes: 0, type: "daily" },
+  { date: "2026-03-19", day: 15, memories: 824, hot: 572, warm: 252, cold: 0, archive: 0, size: 3.05, recall: 0, similarity: 0, tested: 0, successes: 0, type: "daily" },
 ];
 
 const weeklyResults = [
   { date: "2026-03-12", day: 8, memories: 823, recall: 30, similarity: 26, tested: 50, successes: 15, type: "weekly" },
+  { date: "2026-03-19", day: 15, memories: 824, recall: 0, similarity: 0, tested: 0, successes: 0, type: "weekly" },
 ];
 
 const subjects = [
@@ -111,6 +113,8 @@ export default function Home() {
           {" "}&middot;{" "}
           Embeddings: all-MiniLM-L6-v2 (384 dims)
           <div className="mt-2 text-gray-700">
+            <a href="/engram-evo" className="hover:text-gray-400">Engram Evo Experiment</a>
+            {" "}&middot;{" "}
             <a href="https://github.com/terronexdev" className="hover:text-gray-400">GitHub</a>
             {" "}&middot;{" "}
             <a href="https://www.npmjs.com/package/@terronex/engram" className="hover:text-gray-400">NPM</a>
@@ -150,8 +154,8 @@ function Overview({ latest, latestWeekly }: { latest: typeof dailyResults[0]; la
         </div>
         <div className="card">
           <div className="text-xs text-gray-500 uppercase tracking-wider">Tier Transitions</div>
-          <div className="stat-value text-gray-400 mt-1">0</div>
-          <div className="text-xs text-gray-600 mt-1">pending week 2+</div>
+          <div className="stat-value text-green-400 mt-1">252</div>
+          <div className="text-xs text-gray-600 mt-1">HOT → WARM achieved!</div>
         </div>
       </div>
 
@@ -183,7 +187,7 @@ function Overview({ latest, latestWeekly }: { latest: typeof dailyResults[0]; la
         </div>
         <div className="flex justify-between mt-3 text-xs text-gray-600">
           <span>March 4, 2026</span>
-          <span>HOT-&gt;WARM expected ~Day 14</span>
+          <span className="text-green-400">HOT-&gt;WARM achieved Day 15!</span>
           <span>WARM-&gt;COLD expected ~Day 60</span>
           <span>June 2, 2026</span>
         </div>
@@ -658,7 +662,7 @@ function Timeline() {
     { date: "Mar 10", day: 6, title: "Injection plateau", desc: "823 memories stable. No new injections (some subjects have only 1 fact)." },
     { date: "Mar 11", day: 7, title: "Design flaw identified", desc: "Daily recall was boosting accessCount, preventing HOT → WARM transitions. Switched to weekly testing protocol.", highlight: true },
     { date: "Mar 12", day: 8, title: "First weekly test", desc: "30% recall, 26% similarity. New protocol: inject_only.sh (daily) + weekly_test.sh. 25% sampling.", highlight: true },
-    { date: "~Mar 18", day: 14, title: "Expected: HOT → WARM begins", desc: "Earliest memories (Day 0) should start transitioning. Effective age > 7 days.", future: true },
+    { date: "Mar 19", day: 15, title: "✓ HOT → WARM transitions achieved!", desc: "252 memories transitioned to WARM tier. Tier system validated - decay working as designed!", highlight: true },
     { date: "~Apr 3", day: 30, title: "Expected: WARM → COLD begins", desc: "First memories reach 30-day effective age. Clustering phase activates.", future: true },
     { date: "~Jun 2", day: 90, title: "Experiment concludes", desc: "Final analysis. Full decay curve. Publish results.", future: true },
   ];
